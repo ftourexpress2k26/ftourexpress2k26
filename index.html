@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Ftour Express</title>
+    <meta name="description" content="Ftour Express - Contact et commandes pour le Ramadan. Snapchat, Instagram et email.">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts - NOUVELLES POLICES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    
+    <!-- Model Viewer pour le 3D -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+    
+    <style>
+        /* Propriétés CSS avancées pour l'animation du fond */
+        @property --a {
+            syntax: '<angle>';
+            inherits: true;
+            initial-value: 0deg;
+        }
+        
+        @property --p {
+            syntax: '<percentage>';
+            inherits: true;
+            initial-value: 0%;
+        }
+        
+        @property --c1 {
+            syntax: '<color>';
+            inherits: true;
+            initial-value: #000;
+        }
+        
+        @property --c2 {
+            syntax: '<color>';
+            inherits: true;
+            initial-value: #000;
+        }
+        
+        /* NOUVELLE PALETTE DE COULEURS */
+        :root {
+            /* Turquoise/bleu vert */
+            --turquoise-light: #8FD6D2;
+            --turquoise-medium: #4CB7B1;
+            --turquoise-dark: #2FA7A1;
+            
+            /* Or/jaune */
+            --gold-light: #F2C36B;
+            --gold-medium: #E1A23A;
+            --gold-dark: #C98A2E;
+            
+            /* Rouge/orange */
+            --red-light: #F07B6A;
+            --red-medium: #E5533D;
+            --red-dark: #C73D2A;
+            
+            /* Vert - NOUVELLES COULEURS POUR EMAIL */
+            --green-light: #6FCF97;
+            --green-medium: #27AE60;
+            --green-dark: #219653;
+            
+            /* Gris et blanc */
+            --gray-light: #B5B5B5;
+            --gray-medium: #9A9A9A;
+            --gray-dark: #7A7A7A;
+            --white: #FFFFFF;
+            
+            /* Variables d'application */
+            --primary-color: var(--turquoise-medium);
+            --secondary-color: var(--gold-medium);
+            --accent-color: var(--red-medium);
+            
+            --background-dark: #1A1A1A;
+            --background-medium: #2D2D2D;
+            --background-light: #3F3F3F;
+            
+            --text-primary: var(--white);
+            --text-secondary: var(--gray-light);
+            --text-accent: var(--gold-light);
+            
+            --shadow: 0 5px 15px rgba(76, 183, 177, 0.3);
+            --shadow-strong: 0 10px 25px rgba(76, 183, 177, 0.5);
+            --transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            --border-radius: 15px;
+        }
+        
+        /* Fond animé géométrique - AVEC NOUVELLES COULEURS */
+        .animated-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            --s: min(80px, 10vw);
+            --_g: #0000, var(--c1) 2deg calc(var(--a) - 2deg), #0000 var(--a);
+            background: 
+                conic-gradient(from calc(-45deg  - var(--a)/2) at top    var(--p) left  var(--p), var(--_g)),
+                conic-gradient(from calc(-45deg  - var(--a)/2) at top    var(--p) left  var(--p), var(--_g)),
+                conic-gradient(from calc( 45deg  - var(--a)/2) at top    var(--p) right var(--p), var(--_g)),
+                conic-gradient(from calc( 45deg  - var(--a)/2) at top    var(--p) right var(--p), var(--_g)),
+                conic-gradient(from calc(-135deg - var(--a)/2) at bottom var(--p) left  var(--p), var(--_g)),
+                conic-gradient(from calc(-135deg - var(--a)/2) at bottom var(--p) left  var(--p), var(--_g)),
+                conic-gradient(from calc( 135deg - var(--a)/2) at bottom var(--p) right var(--p), var(--_g)),
+                conic-gradient(from calc( 135deg - var(--a)/2) at bottom var(--p) right var(--p), var(--_g))
+                var(--c2);
+            background-size: calc(2 * var(--s)) calc(2 * var(--s));
+            /* Animation rapide */
+            animation: geometricAnimation 3.5s infinite alternate ease-in-out;
+        }
+        
+        @keyframes geometricAnimation {
+            0%, 20% {
+                --a: 135deg;
+                --p: 20%;
+                /* Turquoise et or */
+                --c1: var(--turquoise-dark);
+                --c2: var(--gold-medium);
+                background-position: 0 0, var(--s) var(--s);
+            }
+            40%, 50% {
+                --a: 90deg;
+                --p: 25%;
+                /* Turquoise et or */
+                --c1: var(--turquoise-dark);
+                --c2: var(--gold-medium);
+                background-position: 0 0, var(--s) var(--s);
+            }
+            50.01%, 60% {
+                --a: 90deg;
+                --p: 25%;
+                /* Inversion des couleurs */
+                --c2: var(--turquoise-dark);
+                --c1: var(--gold-medium);
+                background-position: var(--s) 0, 0 var(--s);
+            }
+            80%, 100% {
+                --a: 135deg;
+                --p: 20%;
+                /* Inversion des couleurs */
+                --c2: var(--turquoise-dark);
+                --c1: var(--gold-medium);
+                background-position: var(--s) 0, 0 var(--s);
+            }
+        }
+        
+        /* Overlay pour améliorer la lisibilité */
+        .background-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, 
+                rgba(26, 26, 26, 0.9) 0%, 
+                rgba(45, 45, 45, 0.8) 50%, 
+                rgba(63, 63, 63, 0.7) 100%);
+            z-index: -1;
+            backdrop-filter: blur(2px);
+        }
+        
+        /* Barre de défilement personnalisée */
+        ::-webkit-scrollbar {
+            width: clamp(8px, 1.5vw, 12px);
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--turquoise-dark);
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, var(--turquoise-medium), var(--turquoise-light), var(--turquoise-medium));
+            border-radius: 10px;
+            border: 2px solid var(--turquoise-dark);
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, var(--turquoise-light), var(--turquoise-medium), var(--turquoise-light));
+        }
+        
+        /* Pour Firefox */
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: var(--turquoise-medium) var(--turquoise-dark);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html, body {
+            height: 100%;
+            width: 100%;
+            overflow-x: hidden;
+        }
+        
+        body {
+            color: var(--text-primary);
+            /* NOUVELLE POLICE PRINCIPALE - OSWALD */
+            font-family: 'Oswald', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            min-height: -webkit-fill-available;
+            padding: clamp(10px, 3vw, 30px);
+            position: relative;
+            overflow-y: auto;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        /* Contenu principal */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: clamp(25px, 4vw, 40px);
+            width: 100%;
+            max-width: min(800px, 95vw);
+            z-index: 1;
+            margin: clamp(30px, 5vw, 60px) 0;
+        }
+        
+        /* Conteneur du modèle 3D */
+        .logo-container {
+            width: clamp(140px, 25vw, 200px);
+            height: clamp(140px, 25vw, 200px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: clamp(5px, 1vw, 10px);
+        }
+        
+        /* Modèle 3D avec rotation rapide et adaptation responsive */
+        model-viewer {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: transparent;
+            overflow: visible;
+            --poster-color: transparent;
+            animation: float3D 6s ease-in-out infinite;
+            filter: drop-shadow(0 0 20px rgba(225, 162, 58, 0.5));
+        }
+        
+        /* Animation de flottement pour le modèle 3D */
+        @keyframes float3D {
+            0%, 100% { 
+                transform: translateY(0) rotate(0deg);
+            }
+            50% { 
+                transform: translateY(-15px) rotate(5deg);
+            }
+        }
+        
+        /* Titre */
+        .title {
+            /* NOUVELLE POLICE POUR LE TITRE - FREDERICKA THE GREAT */
+            font-family: 'Fredericka the Great', cursive;
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            letter-spacing: clamp(2px, 0.3vw, 3px);
+            background: linear-gradient(45deg, var(--white), var(--gold-light), var(--white));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-align: center;
+            margin-bottom: clamp(5px, 1vw, 10px);
+            text-shadow: 0 0 clamp(10px, 2vw, 20px) rgba(225, 162, 58, 0.3);
+            line-height: 1.2;
+            padding: 0 clamp(10px, 3vw, 20px);
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            animation: titleGlow 3s ease-in-out infinite;
+            font-weight: 400; /* Fredericka the Great n'a qu'un seul poids */
+        }
+        
+        @keyframes titleGlow {
+            0%, 100% { 
+                text-shadow: 0 0 clamp(10px, 2vw, 20px) rgba(225, 162, 58, 0.3);
+            }
+            50% { 
+                text-shadow: 0 0 clamp(15px, 3vw, 30px) rgba(242, 195, 107, 0.5);
+            }
+        }
+        
+        .subtitle {
+            /* NOUVELLE POLICE POUR SOUS-TITRE - OSWALD */
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+            color: var(--gold-light);
+            text-align: center;
+            margin-bottom: clamp(20px, 3vw, 40px);
+            font-weight: 500;
+            line-height: 1.4;
+            padding: 0 clamp(10px, 3vw, 20px);
+            text-shadow: 0 0 5px rgba(225, 162, 58, 0.3);
+            letter-spacing: 1px;
+        }
+        
+        /* Grille de boutons */
+        .buttons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+            gap: clamp(15px, 2vw, 20px);
+            width: 100%;
+            max-width: min(800px, 95vw);
+        }
+        
+        /* Boutons */
+        .btn-contact {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: clamp(15px, 2vw, 20px);
+            padding: clamp(18px, 3vw, 25px);
+            background: rgba(47, 167, 161, 0.2);
+            border: 2px solid transparent;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            color: var(--text-primary);
+            overflow: hidden;
+            transition: var(--transition);
+            backdrop-filter: blur(15px);
+            min-height: clamp(85px, 12vw, 100px);
+            -webkit-tap-highlight-color: rgba(225, 162, 58, 0.1);
+            border: 1px solid rgba(76, 183, 177, 0.3);
+        }
+        
+        .btn-contact::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: var(--border-radius);
+            padding: clamp(1.5px, 0.2vw, 2px);
+            background: linear-gradient(45deg, var(--turquoise-dark), var(--turquoise-medium), var(--turquoise-light), var(--turquoise-medium), var(--turquoise-dark));
+            -webkit-mask: 
+                linear-gradient(#fff 0 0) content-box, 
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0.7;
+            transition: var(--transition);
+            background-size: 300% 300%;
+        }
+        
+        .btn-contact:hover::before,
+        .btn-contact:active::before {
+            opacity: 1;
+            animation: borderGlow 2s linear infinite;
+        }
+        
+        /* Effet de lumière au survol */
+        .btn-contact::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(76, 183, 177, 0.1),
+                rgba(143, 214, 210, 0.3),
+                rgba(76, 183, 177, 0.1),
+                transparent
+            );
+            transition: left 0.7s ease;
+            z-index: 1;
+        }
+        
+        .btn-contact:hover::after {
+            left: 100%;
+        }
+        
+        /* Icônes */
+        .btn-icon-wrapper {
+            position: relative;
+            width: clamp(45px, 8vw, 60px);
+            height: clamp(45px, 8vw, 60px);
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+        
+        .btn-icon {
+            font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+            color: var(--turquoise-light);
+            transition: var(--transition);
+            z-index: 2;
+            text-shadow: 0 0 clamp(5px, 1vw, 10px) rgba(76, 183, 177, 0.5);
+        }
+        
+        .icon-circle {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: rgba(76, 183, 177, 0.15);
+            border: clamp(1.5px, 0.2vw, 2px) solid var(--turquoise-medium);
+            transition: var(--transition);
+        }
+        
+        .btn-contact:hover .icon-circle,
+        .btn-contact:active .icon-circle {
+            transform: scale(1.1);
+            box-shadow: 0 0 clamp(15px, 2vw, 20px) rgba(76, 183, 177, 0.4);
+        }
+        
+        .btn-contact:hover .btn-icon,
+        .btn-contact:active .btn-icon {
+            transform: scale(1.2) rotate(5deg);
+            color: var(--turquoise-light);
+            filter: drop-shadow(0 0 8px rgba(143, 214, 210, 0.7));
+        }
+        
+        /* Contenu des boutons */
+        .btn-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: clamp(5px, 1vw, 8px);
+            z-index: 2;
+            text-align: left;
+            min-width: 0;
+        }
+        
+        .btn-title {
+            /* NOUVELLE POLICE POUR LES TITRES DES BOUTONS - FREDERICKA THE GREAT */
+            font-family: 'Fredericka the Great', cursive;
+            font-size: clamp(1rem, 2.5vw, 1.4rem);
+            font-weight: 400;
+            color: var(--gold-light);
+            letter-spacing: clamp(1px, 0.15vw, 2px);
+            line-height: 1.2;
+            word-break: break-word;
+        }
+        
+        .btn-subtitle {
+            /* NOUVELLE POLICE POUR LES SOUS-TITRES DES BOUTONS - OSWALD */
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(0.75rem, 2vw, 1rem);
+            color: var(--gray-light);
+            font-weight: 400;
+            line-height: 1.3;
+            word-break: break-all;
+            overflow-wrap: break-word;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Effets de survol */
+        .btn-contact:hover,
+        .btn-contact:active {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-strong);
+            background: rgba(47, 167, 161, 0.3);
+        }
+        
+        /* Style spécifique pour chaque bouton - INVERSE SNAPCHAT ET INSTAGRAM */
+        .btn-contact:nth-child(1) .btn-icon { color: var(--gold-light); } /* Snapchat en jaune */
+        .btn-contact:nth-child(1) .icon-circle { border-color: var(--gold-medium); background: rgba(225, 162, 58, 0.15); }
+        .btn-contact:nth-child(1):hover .btn-icon { color: var(--gold-light); }
+        
+        .btn-contact:nth-child(2) .btn-icon { color: var(--red-light); } /* Instagram en rouge */
+        .btn-contact:nth-child(2) .icon-circle { border-color: var(--red-medium); background: rgba(229, 83, 61, 0.15); }
+        .btn-contact:nth-child(2):hover .btn-icon { color: var(--red-light); }
+        
+        .btn-contact:nth-child(3) .btn-icon { color: var(--green-light); } /* Email en vert */
+        .btn-contact:nth-child(3) .icon-circle { border-color: var(--green-medium); background: rgba(39, 174, 96, 0.15); }
+        .btn-contact:nth-child(3):hover .btn-icon { color: var(--green-light); }
+        
+        /* ANIMATIONS */
+        @keyframes borderGlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* RESPONSIVE AVANCÉ */
+        
+        /* Tablettes et mobiles */
+        @media (max-width: 768px) {
+            body {
+                padding: clamp(8px, 2.5vw, 15px);
+            }
+            
+            .main-content {
+                gap: clamp(20px, 3.5vw, 30px);
+                margin: clamp(25px, 4vw, 40px) 0;
+            }
+            
+            .logo-container {
+                width: clamp(120px, 22vw, 160px);
+                height: clamp(120px, 22vw, 160px);
+            }
+            
+            .buttons-grid {
+                gap: clamp(12px, 1.8vw, 15px);
+            }
+            
+            .animated-background {
+                --s: min(60px, 15vw);
+                animation: geometricAnimation 2.5s infinite alternate ease-in-out;
+            }
+            
+            model-viewer {
+                animation: float3D 8s ease-in-out infinite;
+            }
+        }
+        
+        /* Smartphones */
+        @media (max-width: 480px) {
+            body {
+                padding: clamp(5px, 2vw, 10px);
+                justify-content: flex-start;
+                padding-top: clamp(20px, 5vw, 30px);
+            }
+            
+            .main-content {
+                margin: clamp(20px, 3vw, 30px) 0;
+                gap: clamp(15px, 3vw, 25px);
+            }
+            
+            .logo-container {
+                width: clamp(100px, 20vw, 140px);
+                height: clamp(100px, 20vw, 140px);
+            }
+            
+            .btn-contact {
+                gap: clamp(12px, 2vw, 15px);
+                padding: clamp(15px, 2.5vw, 18px);
+            }
+            
+            .btn-title {
+                font-size: clamp(0.9rem, 3vw, 1.2rem);
+            }
+            
+            .btn-subtitle {
+                font-size: clamp(0.7rem, 2.5vw, 0.9rem);
+            }
+            
+            .animated-background {
+                --s: min(40px, 20vw);
+                animation: geometricAnimation 2s infinite alternate ease-in-out;
+            }
+            
+            model-viewer {
+                animation: float3D 10s ease-in-out infinite;
+            }
+        }
+        
+        /* Très petits smartphones */
+        @media (max-width: 360px) {
+            .title {
+                font-size: clamp(1.5rem, 4vw, 1.8rem);
+            }
+            
+            .subtitle {
+                font-size: clamp(0.8rem, 2vw, 1rem);
+            }
+            
+            .logo-container {
+                width: 90px;
+                height: 90px;
+            }
+            
+            .buttons-grid {
+                gap: 10px;
+            }
+            
+            .btn-contact {
+                min-height: 75px;
+                padding: 12px 15px;
+            }
+            
+            .btn-icon-wrapper {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .btn-icon {
+                font-size: 1.2rem;
+            }
+            
+            .animated-background {
+                --s: min(30px, 25vw);
+                animation: geometricAnimation 1.8s infinite alternate ease-in-out;
+            }
+        }
+        
+        /* Orientation paysage */
+        @media (max-height: 600px) and (orientation: landscape) {
+            body {
+                padding: 10px;
+                justify-content: flex-start;
+            }
+            
+            .main-content {
+                margin: 20px 0;
+                gap: 20px;
+            }
+            
+            .logo-container {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .title {
+                font-size: 1.6rem;
+                margin-bottom: 5px;
+            }
+            
+            .subtitle {
+                font-size: 0.9rem;
+                margin-bottom: 20px;
+            }
+            
+            .btn-contact {
+                min-height: 70px;
+                padding: 15px;
+            }
+            
+            .animated-background {
+                --s: 60px;
+                animation: geometricAnimation 2s infinite alternate ease-in-out;
+            }
+            
+            model-viewer {
+                animation: float3D 5s ease-in-out infinite;
+            }
+        }
+        
+        /* Support tactile amélioré */
+        @media (hover: none) and (pointer: coarse) {
+            .btn-contact:hover {
+                transform: none;
+            }
+            
+            .btn-contact:active {
+                transform: translateY(-3px) scale(0.98);
+            }
+            
+            .btn-contact:hover .btn-icon {
+                transform: none;
+            }
+            
+            .btn-contact:active .btn-icon {
+                transform: scale(1.2) rotate(5deg);
+            }
+        }
+        
+        /* Hauteur d'écran très petite */
+        @media (max-height: 500px) {
+            .main-content {
+                margin: 15px 0;
+                gap: 15px;
+            }
+            
+            .logo-container {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .title {
+                font-size: 1.4rem;
+                margin-bottom: 3px;
+            }
+            
+            .subtitle {
+                font-size: 0.8rem;
+                margin-bottom: 15px;
+            }
+            
+            .btn-contact {
+                min-height: 65px;
+                padding: 12px;
+            }
+            
+            .animated-background {
+                --s: 50px;
+                animation: geometricAnimation 1.5s infinite alternate ease-in-out;
+            }
+        }
+        
+        /* Désactiver les animations si préféré */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            
+            .animated-background {
+                animation: none !important;
+            }
+            
+            model-viewer {
+                animation: none !important;
+            }
+            
+            .btn-contact:hover::before,
+            .btn-contact:active::before {
+                animation: none;
+            }
+            
+            .title {
+                animation: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background animé géométrique - AVEC NOUVELLE PALETTE -->
+    <div class="animated-background"></div>
+    <div class="background-overlay"></div>
+    
+    <!-- Contenu principal -->
+    <div class="main-content">
+        <!-- Logo 3D - Croissant de lune doré -->
+        <div class="logo-container">
+            <model-viewer 
+                src="https://raw.githubusercontent.com/zznkch/delice/main/golden_crescent_with_ramadan_pattern.glb"
+                alt="Croissant de lune doré Ramadan Ftour Express"
+                auto-rotate
+                auto-rotate-delay="0"
+                rotation-per-second="30deg"
+                disable-zoom
+                camera-controls
+                camera-orbit="0deg 75deg 105%"
+                field-of-view="25deg"
+                exposure="1.2"
+                shadow-intensity="1"
+                environment-image="neutral"
+                style="width:100%; height:100%;"
+                ar
+                ar-modes="scene-viewer quick-look"
+                interaction-prompt="none">
+            </model-viewer>
+        </div>
+        
+        <!-- Titre -->
+        <div>
+            <h1 class="title">Ftour Express</h1>
+            <div class="subtitle">Contact et Commandes</div>
+        </div>
+        
+        <!-- Boutons de contact -->
+        <div class="buttons-grid">
+            <!-- Snapchat - EN JAUNE -->
+            <a class="btn-contact" target="_blank" href="https://www.snapchat.com/add/ftourexpress26" aria-label="Snapchat Ftour Express">
+                <div class="btn-icon-wrapper">
+                    <div class="icon-circle"></div>
+                    <div class="btn-icon"><i class="fab fa-snapchat-ghost"></i></div>
+                </div>
+                
+                <div class="btn-content">
+                    <div class="btn-title">SNAPCHAT</div>
+                    <div class="btn-subtitle">@ftourexpress26</div>
+                </div>
+            </a>
+            
+            <!-- Instagram - EN ROUGE -->
+            <a class="btn-contact" target="_blank" href="https://www.instagram.com/ftourexpress2k26" aria-label="Instagram Ftour Express">
+                <div class="btn-icon-wrapper">
+                    <div class="icon-circle"></div>
+                    <div class="btn-icon"><i class="fab fa-instagram"></i></div>
+                </div>
+                
+                <div class="btn-content">
+                    <div class="btn-title">INSTAGRAM</div>
+                    <div class="btn-subtitle">@ftourexpress2k26</div>
+                </div>
+            </a>
+            
+            <!-- Email - MAINTENANT EN VERT -->
+            <a class="btn-contact" href="mailto:ftourexpress2k26@gmail.com" aria-label="Email Ftour Express">
+                <div class="btn-icon-wrapper">
+                    <div class="icon-circle"></div>
+                    <div class="btn-icon"><i class="fas fa-envelope"></i></div>
+                </div>
+                
+                <div class="btn-content">
+                    <div class="btn-title">E-MAIL</div>
+                    <div class="btn-subtitle">ftourexpress2k26@gmail.com</div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Effets sur les boutons
+        const buttons = document.querySelectorAll('.btn-contact');
+        
+        buttons.forEach(btn => {
+            // Pour mobile: effet au toucher
+            btn.addEventListener('touchstart', function(e) {
+                e.preventDefault();
+                this.classList.add('touched');
+                this.style.transform = 'scale(0.98) translateY(-3px)';
+            }, { passive: false });
+            
+            btn.addEventListener('touchend', function() {
+                setTimeout(() => {
+                    this.classList.remove('touched');
+                    this.style.transform = 'translateY(-5px)';
+                }, 150);
+            });
+            
+            btn.addEventListener('mouseenter', function() {
+                if (!this.classList.contains('touched')) {
+                    this.style.transform = 'translateY(-5px)';
+                }
+            });
+            
+            btn.addEventListener('mouseleave', function() {
+                if (!this.classList.contains('touched')) {
+                    this.style.transform = 'translateY(0)';
+                }
+            });
+            
+            btn.addEventListener('click', function(e) {
+                this.classList.add('clicked');
+                this.style.transform = 'scale(0.98) translateY(-5px)';
+                
+                // Créer une explosion d'étoiles colorées au clic
+                createStars(e.clientX || e.touches?.[0]?.clientX || window.innerWidth / 2, 
+                           e.clientY || e.touches?.[0]?.clientY || window.innerHeight / 2);
+                
+                setTimeout(() => {
+                    this.style.transform = 'translateY(-5px)';
+                    setTimeout(() => {
+                        this.classList.remove('clicked');
+                    }, 100);
+                }, 150);
+            });
+        });
+        
+        // Fonction pour créer des étoiles colorées au clic
+        function createStars(x, y) {
+            const colors = ['#4CB7B1', '#E1A23A', '#E5533D', '#F2C36B', '#8FD6D2', '#F07B6A', '#6FCF97', '#27AE60'];
+            const starCount = 8;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.style.position = 'fixed';
+                star.style.left = `${x}px`;
+                star.style.top = `${y}px`;
+                star.style.width = '10px';
+                star.style.height = '10px';
+                star.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                star.style.borderRadius = '50%';
+                star.style.zIndex = '1000';
+                star.style.pointerEvents = 'none';
+                star.style.boxShadow = '0 0 10px currentColor';
+                
+                const angle = (i / starCount) * Math.PI * 2;
+                const distance = 50 + Math.random() * 50;
+                const duration = 600 + Math.random() * 300;
+                
+                star.style.transition = `all ${duration}ms cubic-bezier(0.1, 0.8, 0.3, 1)`;
+                
+                document.body.appendChild(star);
+                
+                // Force le navigateur à appliquer les styles initiaux
+                star.getBoundingClientRect();
+                
+                // Animation
+                star.style.transform = `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px) scale(0)`;
+                star.style.opacity = '0';
+                
+                setTimeout(() => {
+                    if (star.parentNode) {
+                        star.remove();
+                    }
+                }, duration);
+            }
+        }
+        
+        // Initialisation
+        function init() {
+            // Animation d'entrée des boutons
+            setTimeout(() => {
+                buttons.forEach((btn, index) => {
+                    setTimeout(() => {
+                        btn.style.opacity = '0';
+                        btn.style.transform = 'translateY(20px)';
+                        btn.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                        
+                        setTimeout(() => {
+                            btn.style.opacity = '1';
+                            btn.style.transform = 'translateY(0)';
+                        }, 100);
+                    }, index * 100);
+                });
+            }, 300);
+            
+            // Ajuster la hauteur pour iOS
+            const setVH = () => {
+                const vh = window.innerHeight * 0.01;
+                document.documentElement.style.setProperty('--vh', `${vh}px`);
+            };
+            
+            setVH();
+            window.addEventListener('resize', setVH);
+        }
+        
+        window.addEventListener('load', init);
+        
+        // Redimensionnement optimisé
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                // Réinitialiser l'animation du background
+                const bg = document.querySelector('.animated-background');
+                if (bg) {
+                    bg.style.animation = 'none';
+                    setTimeout(() => {
+                        // Durée adaptative selon la taille de l'écran
+                        const duration = window.innerWidth < 480 ? '2s' : 
+                                        window.innerWidth < 768 ? '2.5s' : '3.5s';
+                        bg.style.animation = `geometricAnimation ${duration} infinite alternate ease-in-out`;
+                    }, 10);
+                }
+            }, 250);
+        });
+        
+        // Détection de l'orientation
+        window.addEventListener('orientationchange', () => {
+            setTimeout(() => {
+                const bg = document.querySelector('.animated-background');
+                if (bg) {
+                    bg.style.animation = 'none';
+                    setTimeout(() => {
+                        // Durée adaptative selon la taille de l'écran
+                        const duration = window.innerWidth < 480 ? '2s' : 
+                                        window.innerWidth < 768 ? '2.5s' : '3.5s';
+                        bg.style.animation = `geometricAnimation ${duration} infinite alternate ease-in-out`;
+                    }, 50);
+                }
+            }, 300);
+        });
+    </script>
+</body>
+</html>
