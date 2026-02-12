@@ -619,7 +619,8 @@
                target="_blank" 
                rel="noopener noreferrer"
                href="https://www.instagram.com/ftourexpress2k26"
-               aria-label="Instagram Ftour Express">
+               aria-label="Instagram Ftour Express"
+               id="instagram-btn">
                 <div class="btn-icon-wrapper">
                     <div class="icon-circle"></div>
                     <div class="btn-icon"><i class="fab fa-instagram"></i></div>
@@ -646,6 +647,7 @@
     </div>
 
     <script>
+        // ===== EFFET D'ÉTOILES AU CLIC =====
         const buttons = document.querySelectorAll('.btn-contact');
         
         buttons.forEach(btn => {
@@ -689,6 +691,44 @@
             }
         }
         
+        // ===== CORRECTION POUR INSTAGRAM : OUVERTURE DIRECTE DU PROFIL DANS L'APP =====
+        const instagramBtn = document.getElementById('instagram-btn');
+        if (instagramBtn) {
+            // On remplace le comportement du clic
+            instagramBtn.addEventListener('click', function(e) {
+                e.preventDefault();          // Bloque le lien classique
+                e.stopImmediatePropagation(); // Empêche l'autre écouteur d'étoiles (on le relance nous-mêmes)
+                
+                // Génère les étoiles (comme avant)
+                createStars(e.clientX || e.touches?.[0]?.clientX || window.innerWidth / 2, 
+                           e.clientY || e.touches?.[0]?.clientY || window.innerHeight / 2);
+                
+                const username = 'ftourexpress2k26';
+                // Schéma profond pour ouvrir l'application Instagram directement sur le profil
+                const appUrl = 'instagram://user?username=' + username;
+                // Lien web de secours
+                const webUrl = 'https://www.instagram.com/' + username + '/';
+                
+                // Timeout de secours : si l'app ne s'ouvre pas dans les 500ms, on va sur le web
+                const fallbackTimeout = setTimeout(function() {
+                    window.location.href = webUrl;
+                }, 500);
+                
+                // Si l'application est lancée, la page passe en arrière-plan (document.hidden)
+                const handleVisibilityChange = function() {
+                    if (document.hidden) {
+                        clearTimeout(fallbackTimeout);
+                        document.removeEventListener('visibilitychange', handleVisibilityChange);
+                    }
+                };
+                document.addEventListener('visibilitychange', handleVisibilityChange, { once: true });
+                
+                // Tentative d'ouverture de l'application
+                window.location.href = appUrl;
+            });
+        }
+        
+        // ===== INIT =====
         function init() {
             setTimeout(() => {
                 buttons.forEach((btn, index) => {
