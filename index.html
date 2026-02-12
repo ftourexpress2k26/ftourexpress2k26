@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>Ftour Express</title>
+    <title>Ftour Express — Nuages Dorés</title>
     <meta name="description" content="Ftour Express - Contact et commandes pour le Ramadan. Snapchat, Instagram et email.">
     
     <!-- Favicon 🌙 -->
@@ -22,213 +22,34 @@
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
     
     <style>
-        /* ========================================= */
-        /*   NOUVEAU FOND : SPLASH DE LAIT ANIMÉ    */
-        /* ========================================= */
-        .milk-splash-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
-            background: radial-gradient(circle at 20% 30%, #C2E9FB, #A4D8F0);
-            overflow: hidden;
-        }
-
-        .splash {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 60% 40% 70% 30% / 45% 55% 45% 55%;
-            filter: blur(8px);
-            animation: floatSplash 15s infinite alternate ease-in-out;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-        }
-
-        .splash1 {
-            width: 35vmax;
-            height: 30vmax;
-            top: 5%;
-            left: -10%;
-            background: rgba(255, 255, 255, 0.5);
-            animation-duration: 22s;
-            animation-delay: -2s;
-            filter: blur(12px);
-        }
-        .splash2 {
-            width: 45vmin;
-            height: 40vmin;
-            bottom: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.6);
-            animation-duration: 25s;
-            animation-delay: -5s;
-            border-radius: 70% 30% 60% 40% / 50% 60% 40% 50%;
-            filter: blur(10px);
-        }
-        .splash3 {
-            width: 25vmax;
-            height: 25vmax;
-            top: 40%;
-            right: 15%;
-            background: rgba(255, 255, 255, 0.4);
-            animation-duration: 18s;
-            animation-delay: -1s;
-            border-radius: 40% 60% 30% 70% / 60% 30% 70% 40%;
-            filter: blur(15px);
-        }
-        .splash4 {
-            width: 20vmin;
-            height: 25vmin;
-            bottom: 20%;
-            left: 5%;
-            background: rgba(255, 255, 255, 0.7);
-            animation-duration: 20s;
-            animation-delay: -8s;
-            border-radius: 50% 50% 40% 60% / 40% 60% 40% 60%;
-            filter: blur(8px);
-        }
-        .splash5 {
-            width: 50vmin;
-            height: 30vmin;
-            top: 10%;
-            right: -5%;
-            background: rgba(255, 255, 255, 0.55);
-            animation-duration: 30s;
-            animation-delay: -3s;
-            border-radius: 30% 70% 50% 50% / 40% 40% 60% 60%;
-            filter: blur(14px);
-        }
-        .splash6 {
-            width: 15vmax;
-            height: 18vmax;
-            bottom: 5%;
-            left: 20%;
-            background: rgba(255, 255, 255, 0.65);
-            animation-duration: 17s;
-            animation-delay: -7s;
-            border-radius: 55% 45% 65% 35% / 50% 55% 45% 50%;
-            filter: blur(9px);
-        }
-        .splash7 {
-            width: 28vmin;
-            height: 22vmin;
-            top: 60%;
-            left: 30%;
-            background: rgba(255, 255, 255, 0.5);
-            animation-duration: 19s;
-            animation-delay: -4s;
-            border-radius: 45% 55% 40% 60% / 55% 45% 55% 45%;
-            filter: blur(11px);
-        }
-        .splash8 {
-            width: 38vmin;
-            height: 32vmin;
-            top: 15%;
-            left: 40%;
-            background: rgba(255, 255, 255, 0.45);
-            animation-duration: 24s;
-            animation-delay: -9s;
-            border-radius: 35% 65% 45% 55% / 65% 35% 65% 35%;
-            filter: blur(13px);
-        }
-        .splash9 {
-            width: 22vmax;
-            height: 20vmax;
-            bottom: 30%;
-            right: 25%;
-            background: rgba(255, 255, 255, 0.6);
-            animation-duration: 21s;
-            animation-delay: -6s;
-            border-radius: 60% 40% 55% 45% / 45% 55% 45% 55%;
-            filter: blur(10px);
-        }
-        .splash10 {
-            width: 18vmin;
-            height: 26vmin;
-            top: 75%;
-            right: 10%;
-            background: rgba(255, 255, 255, 0.7);
-            animation-duration: 16s;
-            animation-delay: -2.5s;
-            border-radius: 50% 50% 30% 70% / 60% 30% 70% 40%;
-            filter: blur(12px);
-        }
-
-        @keyframes floatSplash {
-            0% {
-                transform: translate(0, 0) scale(1) rotate(0deg);
-                opacity: 0.6;
-            }
-            25% {
-                transform: translate(3%, -4%) scale(1.05) rotate(3deg);
-                opacity: 0.8;
-            }
-            50% {
-                transform: translate(-2%, 2%) scale(0.98) rotate(-2deg);
-                opacity: 0.7;
-            }
-            75% {
-                transform: translate(4%, 3%) scale(1.02) rotate(4deg);
-                opacity: 0.85;
-            }
-            100% {
-                transform: translate(-3%, -2%) scale(1) rotate(-1deg);
-                opacity: 0.6;
-            }
-        }
-
-        /* ========================================= */
-        /*   PALETTE DE COULEURS - THÈME CLAIR      */
-        /* ========================================= */
-        :root {
-            --turquoise-light: #8FD6D2;
-            --turquoise-medium: #4CB7B1;
-            --turquoise-dark: #2A8A85;
-            --snap-yellow: #FFFC00;
-            --red-light: #F07B6A;
-            --red-medium: #E5533D;
-            --red-dark: #C73D2A;
-            --green-light: #6FCF97;
-            --green-medium: #27AE60;
-            --green-dark: #219653;
-            --gray-light: #F5F5F5;
-            --gray-medium: #E0E0E0;
-            --gray-dark: #4A4A4A;
-            --white: #FFFFFF;
-            --blue-milk: #C2E9FB;
-            
-            --primary-color: var(--turquoise-medium);
-            --secondary-color: var(--snap-yellow);
-            --accent-color: var(--red-medium);
-            
-            --text-primary: #1A3B3A;
-            --text-secondary: #2C5F5A;
-            --text-accent: var(--turquoise-dark);
-            
-            --shadow: 0 8px 20px rgba(42, 138, 133, 0.15);
-            --shadow-strong: 0 12px 30px rgba(42, 138, 133, 0.25);
-            --transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-            --border-radius: 18px;
-        }
-
-        ::-webkit-scrollbar {
-            width: clamp(8px, 1.5vw, 12px);
-        }
-        ::-webkit-scrollbar-track {
-            background: var(--turquoise-light);
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(135deg, var(--turquoise-medium), var(--turquoise-light), var(--turquoise-medium));
-            border-radius: 10px;
-            border: 2px solid var(--white);
-        }
-        * {
-            scrollbar-width: thin;
-            scrollbar-color: var(--turquoise-medium) var(--turquoise-light);
-        }
+        /* ============================================= */
+        /*   THÈME : BLEU NUIT #172540 + DORÉ #DF9417   */
+        /*   avec NUAGES BRUMEUX BLANCS en fond         */
+        /* ============================================= */
         
+        :root {
+            --night-blue: #172540;
+            --gold: #DF9417;
+            --gold-light: #F5B041;
+            --gold-dark: #B86B0F;
+            --white-soft: rgba(255,255,255,0.9);
+            --glass-bg: rgba(23, 37, 64, 0.65);
+            --glass-border: rgba(223, 148, 23, 0.5);
+            
+            --text-primary: var(--white-soft);
+            --text-secondary: #FEE7C8;
+            --text-gold: var(--gold);
+            
+            --shadow-gold: 0 8px 25px rgba(223, 148, 23, 0.25);
+            --shadow-gold-strong: 0 12px 35px rgba(223, 148, 23, 0.4);
+            --transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            --border-radius: 20px;
+            
+            --snap-yellow: #FFFC00;
+            --insta-rose: #E4405F;
+            --email-gold: var(--gold);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -242,6 +63,7 @@
         }
         
         body {
+            background: var(--night-blue);
             color: var(--text-primary);
             font-family: 'Oswald', sans-serif;
             display: flex;
@@ -255,6 +77,195 @@
             overflow-y: auto;
             -webkit-tap-highlight-color: transparent;
         }
+
+        /* ============================================= */
+        /*   FOND : NUAGES BRUMEUX + SPLASHES DORÉES   */
+        /* ============================================= */
+        .gold-splash-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: var(--night-blue);
+            overflow: hidden;
+        }
+
+        /* ----- NUAGES BLANCS BRUMEUX (nouveaux) ----- */
+        .mist {
+            position: absolute;
+            background: radial-gradient(circle at 40% 50%, rgba(255, 245, 230, 0.2) 0%, rgba(255, 240, 220, 0.08) 60%, transparent 85%);
+            border-radius: 70% 30% 60% 40% / 50% 60% 40% 50%;
+            filter: blur(70px);
+            animation: floatMist 30s infinite alternate ease-in-out;
+            opacity: 0.5;
+            mix-blend-mode: screen;
+        }
+
+        .mist1 {
+            width: 80vmax;
+            height: 50vmax;
+            top: -5%;
+            left: -15%;
+            background: radial-gradient(circle, rgba(255, 249, 230, 0.18) 0%, transparent 80%);
+            animation-duration: 38s;
+            filter: blur(80px);
+        }
+        .mist2 {
+            width: 70vmin;
+            height: 70vmin;
+            bottom: 0;
+            right: 0;
+            background: radial-gradient(circle, rgba(255, 247, 225, 0.15) 0%, transparent 80%);
+            animation-duration: 32s;
+            animation-delay: -5s;
+            filter: blur(75px);
+        }
+        .mist3 {
+            width: 90vmin;
+            height: 60vmin;
+            top: 20%;
+            right: 5%;
+            background: radial-gradient(circle, rgba(255, 251, 240, 0.12) 0%, transparent 85%);
+            animation-duration: 45s;
+            animation-delay: -12s;
+            filter: blur(90px);
+        }
+        .mist4 {
+            width: 60vmax;
+            height: 60vmax;
+            bottom: 5%;
+            left: 0;
+            background: radial-gradient(circle, rgba(255, 250, 235, 0.1) 0%, transparent 80%);
+            animation-duration: 40s;
+            animation-delay: -3s;
+            filter: blur(85px);
+        }
+        .mist5 {
+            width: 50vmin;
+            height: 50vmin;
+            top: 60%;
+            left: 20%;
+            background: radial-gradient(circle, rgba(255, 248, 225, 0.2) 0%, transparent 80%);
+            animation-duration: 28s;
+            animation-delay: -8s;
+            filter: blur(70px);
+        }
+        .mist6 {
+            width: 40vmax;
+            height: 30vmax;
+            top: 10%;
+            left: 40%;
+            background: radial-gradient(circle, rgba(255, 252, 240, 0.1) 0%, transparent 80%);
+            animation-duration: 50s;
+            animation-delay: -18s;
+            filter: blur(95px);
+        }
+        .mist7 {
+            width: 100vmin;
+            height: 40vmin;
+            bottom: 15%;
+            right: 10%;
+            background: radial-gradient(circle, rgba(255, 245, 220, 0.1) 0%, transparent 85%);
+            animation-duration: 35s;
+            animation-delay: -1s;
+            filter: blur(80px);
+        }
+
+        /* ----- SPLASHES DORÉES (gardées, plus éclatantes) ----- */
+        .splash-gold {
+            position: absolute;
+            background: radial-gradient(circle at 30% 30%, rgba(223,148,23,0.25) 0%, rgba(223,148,23,0) 70%);
+            border-radius: 50%;
+            filter: blur(40px);
+            animation: floatGold 20s infinite alternate ease-in-out;
+        }
+
+        .splash-gold1 {
+            width: 55vmax;
+            height: 50vmax;
+            top: -10%;
+            left: -20%;
+            background: radial-gradient(circle, rgba(223,148,23,0.18) 0%, transparent 80%);
+            animation-duration: 24s;
+        }
+        .splash-gold2 {
+            width: 45vmin;
+            height: 45vmin;
+            bottom: 5%;
+            right: 0;
+            background: radial-gradient(circle, rgba(223,148,23,0.2) 0%, transparent 80%);
+            animation-duration: 19s;
+            animation-delay: -3s;
+            filter: blur(50px);
+        }
+        .splash-gold3 {
+            width: 60vmin;
+            height: 60vmin;
+            top: 40%;
+            right: 10%;
+            background: radial-gradient(circle, rgba(223,148,23,0.15) 0%, transparent 85%);
+            animation-duration: 27s;
+            animation-delay: -7s;
+            filter: blur(55px);
+        }
+        .splash-gold4 {
+            width: 35vmax;
+            height: 35vmax;
+            bottom: 20%;
+            left: -5%;
+            background: radial-gradient(circle, rgba(223,148,23,0.12) 0%, transparent 80%);
+            animation-duration: 22s;
+            animation-delay: -2s;
+            filter: blur(45px);
+        }
+        .splash-gold5 {
+            width: 25vmin;
+            height: 25vmin;
+            top: 15%;
+            left: 30%;
+            background: radial-gradient(circle, rgba(223,148,23,0.25) 0%, transparent 80%);
+            animation-duration: 18s;
+            animation-delay: -5s;
+            filter: blur(35px);
+        }
+        .splash-gold6 {
+            width: 40vmin;
+            height: 40vmin;
+            top: 70%;
+            left: 50%;
+            background: radial-gradient(circle, rgba(223,148,23,0.2) 0%, transparent 80%);
+            animation-duration: 21s;
+            animation-delay: -9s;
+            filter: blur(48px);
+        }
+        .splash-gold7 {
+            width: 30vmax;
+            height: 30vmax;
+            top: 5%;
+            right: 5%;
+            background: radial-gradient(circle, rgba(223,148,23,0.1) 0%, transparent 80%);
+            animation-duration: 26s;
+            animation-delay: -1s;
+            filter: blur(60px);
+        }
+
+        @keyframes floatMist {
+            0% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+            50% { transform: translate(4%, -3%) scale(1.1); opacity: 0.5; }
+            100% { transform: translate(-3%, 2%) scale(0.95); opacity: 0.3; }
+        }
+
+        @keyframes floatGold {
+            0% { transform: translate(0, 0) scale(1); opacity: 0.5; }
+            50% { transform: translate(3%, -3%) scale(1.1); opacity: 0.8; }
+            100% { transform: translate(-2%, 2%) scale(0.95); opacity: 0.5; }
+        }
+
+        /* ============================================= */
+        /*   ÉLÉMENTS PRINCIPAUX (inchangés)            */
+        /* ============================================= */
         
         .main-content {
             display: flex;
@@ -274,6 +285,7 @@
             align-items: center;
             justify-content: center;
             margin-bottom: clamp(5px, 1vw, 10px);
+            filter: drop-shadow(0 0 20px rgba(223,148,23,0.5));
         }
         
         model-viewer {
@@ -284,49 +296,47 @@
             overflow: visible;
             --poster-color: transparent;
             animation: float3D 6s ease-in-out infinite;
-            filter: drop-shadow(0 0 20px rgba(76, 183, 177, 0.4));
         }
         
         @keyframes float3D {
             0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(5deg); }
+            50% { transform: translateY(-12px) rotate(5deg); }
         }
         
         .title {
             font-family: 'Fredericka the Great', cursive;
-            font-size: clamp(1.8rem, 5vw, 2.8rem);
-            letter-spacing: clamp(2px, 0.3vw, 3px);
-            background: linear-gradient(45deg, var(--turquoise-dark), #0F4E4A, var(--turquoise-dark));
+            font-size: clamp(2rem, 6vw, 3.2rem);
+            letter-spacing: 3px;
+            background: linear-gradient(145deg, #FFE185, var(--gold), #B8761C);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             text-align: center;
             margin-bottom: clamp(5px, 1vw, 10px);
-            text-shadow: 0 4px 12px rgba(255, 255, 255, 0.6);
+            text-shadow: 0 0 15px rgba(223,148,23,0.7), 0 0 30px rgba(223,148,23,0.4);
             line-height: 1.2;
-            padding: 0 clamp(10px, 3vw, 20px);
+            padding: 0 15px;
             word-wrap: break-word;
-            overflow-wrap: break-word;
             font-weight: 400;
         }
         
         .subtitle {
             font-family: 'Oswald', sans-serif;
-            font-size: clamp(0.9rem, 2.5vw, 1.2rem);
-            color: var(--turquoise-dark);
+            font-size: clamp(1rem, 2.8vw, 1.3rem);
+            color: var(--text-secondary);
             text-align: center;
-            margin-bottom: clamp(20px, 3vw, 40px);
-            font-weight: 600;
+            margin-bottom: clamp(15px, 2vw, 30px);
+            font-weight: 500;
             line-height: 1.4;
-            padding: 0 clamp(10px, 3vw, 20px);
-            text-shadow: 0 2px 8px rgba(255, 255, 255, 0.5);
-            letter-spacing: 1.5px;
+            padding: 0 15px;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
         }
         
         .buttons-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
-            gap: clamp(15px, 2vw, 20px);
+            gap: clamp(18px, 2.5vw, 22px);
             width: 100%;
             max-width: min(800px, 95vw);
         }
@@ -337,7 +347,7 @@
             align-items: center;
             gap: clamp(15px, 2vw, 20px);
             padding: clamp(18px, 3vw, 25px);
-            background: rgba(255, 255, 255, 0.5);
+            background: var(--glass-bg);
             backdrop-filter: blur(12px);
             border-radius: var(--border-radius);
             text-decoration: none;
@@ -345,33 +355,33 @@
             overflow: hidden;
             transition: var(--transition);
             min-height: clamp(85px, 12vw, 100px);
-            -webkit-tap-highlight-color: rgba(76, 183, 177, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            box-shadow: var(--shadow);
+            -webkit-tap-highlight-color: rgba(223,148,23,0.3);
+            border: 1.5px solid var(--glass-border);
+            box-shadow: var(--shadow-gold);
             cursor: pointer;
         }
         
         .btn-contact::before {
             content: '';
             position: absolute;
-            inset: 0;
-            border-radius: var(--border-radius);
+            inset: -2px;
+            border-radius: calc(var(--border-radius) + 2px);
             padding: 2px;
-            background: linear-gradient(45deg, var(--turquoise-light), rgba(255,255,255,0.9), var(--turquoise-light));
+            background: linear-gradient(60deg, transparent, var(--gold-light), transparent);
             -webkit-mask: 
                 linear-gradient(#fff 0 0) content-box, 
                 linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
             mask-composite: exclude;
-            opacity: 0.6;
-            transition: var(--transition);
+            opacity: 0;
+            transition: opacity 0.4s;
             background-size: 300% 300%;
         }
         
         .btn-contact:hover::before,
         .btn-contact:active::before {
-            opacity: 1;
-            animation: borderGlow 2s linear infinite;
+            opacity: 0.9;
+            animation: borderGlowGold 2.5s linear infinite;
         }
         
         .btn-contact::after {
@@ -379,27 +389,28 @@
             position: absolute;
             top: 0;
             left: -100%;
-            width: 100%;
+            width: 80%;
             height: 100%;
             background: linear-gradient(
                 90deg,
                 transparent,
-                rgba(255, 255, 255, 0.4),
-                rgba(143, 214, 210, 0.3),
-                rgba(255, 255, 255, 0.4),
+                rgba(223, 148, 23, 0.25),
+                rgba(255, 215, 0, 0.2),
                 transparent
             );
-            transition: left 0.7s ease;
+            transform: skewX(-20deg);
+            transition: left 0.6s ease;
             z-index: 1;
         }
         
         .btn-contact:hover::after {
-            left: 100%;
+            left: 120%;
         }
         
         .btn-contact:active {
-            transform: scale(0.98) translateY(-2px);
-            transition: transform 0.1s ease;
+            transform: scale(0.97) translateY(-1px);
+            box-shadow: var(--shadow-gold-strong);
+            border-color: var(--gold);
         }
         
         .btn-icon-wrapper {
@@ -414,11 +425,11 @@
         }
         
         .btn-icon {
-            font-size: clamp(1.3rem, 2.5vw, 1.8rem);
-            color: var(--text-primary);
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            color: var(--gold);
             transition: var(--transition);
             z-index: 2;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+            filter: drop-shadow(0 0 8px rgba(223,148,23,0.5));
         }
         
         .icon-circle {
@@ -426,22 +437,25 @@
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
-            border: 2px solid rgba(255, 255, 255, 0.8);
+            background: rgba(223, 148, 23, 0.1);
+            border: 1.5px solid rgba(223, 148, 23, 0.6);
             transition: var(--transition);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            box-shadow: 0 0 15px rgba(223,148,23,0.2);
         }
         
         .btn-contact:hover .icon-circle,
         .btn-contact:active .icon-circle {
-            transform: scale(1.1);
-            box-shadow: 0 0 20px rgba(76, 183, 177, 0.3);
+            transform: scale(1.15);
+            border-color: var(--gold);
+            box-shadow: 0 0 25px var(--gold);
+            background: rgba(223, 148, 23, 0.2);
         }
         
         .btn-contact:hover .btn-icon,
         .btn-contact:active .btn-icon {
-            transform: scale(1.2) rotate(5deg);
-            filter: drop-shadow(0 0 6px currentColor);
+            transform: scale(1.2) rotate(6deg);
+            filter: drop-shadow(0 0 12px var(--gold));
+            color: var(--gold-light);
         }
         
         .btn-content {
@@ -456,130 +470,138 @@
         
         .btn-title {
             font-family: 'Fredericka the Great', cursive;
-            font-size: clamp(1rem, 2.5vw, 1.4rem);
+            font-size: clamp(1.1rem, 2.8vw, 1.5rem);
             font-weight: 400;
-            color: var(--text-primary);
-            letter-spacing: clamp(1px, 0.15vw, 2px);
+            color: var(--white-soft);
+            letter-spacing: 1.5px;
             line-height: 1.2;
             word-break: break-word;
+            text-shadow: 0 0 5px rgba(223,148,23,0.3);
         }
         
         .btn-subtitle {
             font-family: 'Oswald', sans-serif;
-            font-size: clamp(0.75rem, 2vw, 1rem);
+            font-size: clamp(0.8rem, 2.2vw, 1rem);
             color: var(--text-secondary);
-            font-weight: 500;
+            font-weight: 400;
             line-height: 1.3;
             word-break: break-all;
             overflow-wrap: break-word;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.8px;
+            opacity: 0.9;
         }
         
-        .btn-contact:hover,
-        .btn-contact:active {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-strong);
-            background: rgba(255, 255, 255, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.95);
-        }
-        
-        /* ============ */
-        /* COULEURS SPÉCIFIQUES PAR BOUTON */
-        /* ============ */
+        /* Couleurs spécifiques des boutons */
         .btn-contact:nth-child(1) .btn-icon {
-            color: #FFFC00;
+            color: var(--snap-yellow);
         }
         .btn-contact:nth-child(1) .icon-circle {
-            border-color: #FFFC00;
-            background: rgba(255, 255, 200, 0.25); /* JAUNE TRÈS PÂLE */
+            border-color: var(--snap-yellow);
+            background: rgba(255, 252, 0, 0.08);
         }
         .btn-contact:nth-child(1):hover .btn-icon {
-            color: #FFFC00;
-            filter: drop-shadow(0 0 12px #FFFC00);
+            color: var(--snap-yellow);
+            filter: drop-shadow(0 0 15px #FFFC00) drop-shadow(0 0 5px var(--gold));
         }
         
         .btn-contact:nth-child(2) .btn-icon {
-            color: var(--red-dark);
+            color: var(--insta-rose);
         }
         .btn-contact:nth-child(2) .icon-circle {
-            border-color: var(--red-medium);
-            background: rgba(229, 83, 61, 0.15);
+            border-color: var(--insta-rose);
+            background: rgba(228, 64, 95, 0.1);
         }
         .btn-contact:nth-child(2):hover .btn-icon {
-            color: var(--red-dark);
-            filter: drop-shadow(0 0 12px var(--red-light));
+            color: #ff7a9e;
+            filter: drop-shadow(0 0 15px var(--insta-rose)) drop-shadow(0 0 8px var(--gold));
         }
         
         .btn-contact:nth-child(3) .btn-icon {
-            color: var(--green-dark);
+            color: var(--email-gold);
         }
         .btn-contact:nth-child(3) .icon-circle {
-            border-color: var(--green-medium);
-            background: rgba(39, 174, 96, 0.15);
+            border-color: var(--gold);
+            background: rgba(223, 148, 23, 0.15);
         }
         .btn-contact:nth-child(3):hover .btn-icon {
-            color: var(--green-dark);
-            filter: drop-shadow(0 0 12px var(--green-light));
+            color: var(--gold-light);
+            filter: drop-shadow(0 0 20px var(--gold));
         }
         
-        @keyframes borderGlow {
+        @keyframes borderGlowGold {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
         
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: clamp(8px, 1.2vw, 10px);
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--night-blue);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(145deg, var(--gold), var(--gold-dark));
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: var(--gold) var(--night-blue);
+        }
+        
+        /* Responsive */
         @media (max-width: 768px) {
-            body { padding: clamp(8px, 2.5vw, 15px); }
-            .main-content { gap: clamp(20px, 3.5vw, 30px); margin: clamp(25px, 4vw, 40px) 0; }
-            .logo-container { width: clamp(120px, 22vw, 160px); height: clamp(120px, 22vw, 160px); }
+            body { padding: clamp(8px, 2vw, 15px); }
+            .main-content { gap: clamp(20px, 3vw, 30px); }
+            .logo-container { width: clamp(120px, 20vw, 150px); height: clamp(120px, 20vw, 150px); }
         }
         @media (max-width: 480px) {
-            body { padding: clamp(5px, 2vw, 10px); justify-content: flex-start; padding-top: clamp(20px, 5vw, 30px); }
-            .main-content { margin: clamp(20px, 3vw, 30px) 0; gap: clamp(15px, 3vw, 25px); }
-            .logo-container { width: clamp(100px, 20vw, 140px); height: clamp(100px, 20vw, 140px); }
-            .btn-contact { gap: clamp(12px, 2vw, 15px); padding: clamp(15px, 2.5vw, 18px); }
-        }
-        @media (max-width: 360px) {
-            .title { font-size: clamp(1.5rem, 4vw, 1.8rem); }
-            .logo-container { width: 90px; height: 90px; }
-        }
-        @media (max-height: 600px) and (orientation: landscape) {
-            body { padding: 10px; justify-content: flex-start; }
-            .main-content { margin: 20px 0; gap: 20px; }
-            .logo-container { width: 100px; height: 100px; }
-            .title { font-size: 1.6rem; }
+            body { padding: 12px 8px; justify-content: flex-start; padding-top: 25px; }
+            .main-content { margin: 15px 0; gap: 20px; }
+            .btn-contact { gap: 12px; padding: 15px; }
         }
         @media (hover: none) and (pointer: coarse) {
             .btn-contact:hover { transform: none; }
-            .btn-contact:active { transform: scale(0.98) translateY(-2px); }
+            .btn-contact:active { transform: scale(0.98); }
         }
         @media (prefers-reduced-motion: reduce) {
-            .splash, .splash * { animation: none !important; }
-            model-viewer { animation: none !important; }
+            .mist, .splash-gold, model-viewer,
+            .btn-contact::before, .btn-contact::after { animation: none !important; }
         }
     </style>
 </head>
 <body>
-    <div class="milk-splash-bg">
-        <div class="splash splash1"></div>
-        <div class="splash splash2"></div>
-        <div class="splash splash3"></div>
-        <div class="splash splash4"></div>
-        <div class="splash splash5"></div>
-        <div class="splash splash6"></div>
-        <div class="splash splash7"></div>
-        <div class="splash splash8"></div>
-        <div class="splash splash9"></div>
-        <div class="splash splash10"></div>
-        <div class="splash" style="width: 12vmax; height: 14vmax; top: 70%; left: 60%; background: rgba(255,255,255,0.55); animation-duration: 19s; animation-delay: -1s; border-radius: 45% 55% 70% 30% / 50% 60% 40% 50%; filter: blur(9px);"></div>
-        <div class="splash" style="width: 22vmin; height: 18vmin; top: 25%; left: 70%; background: rgba(255,255,255,0.6); animation-duration: 23s; animation-delay: -4s; border-radius: 38% 62% 55% 45% / 53% 47% 53% 47%; filter: blur(11px);"></div>
+
+    <!-- FOND : NUAGES BRUMEUX + SPLASHES DORÉES -->
+    <div class="gold-splash-bg">
+        <!-- Nuages blancs / crème (brume) -->
+        <div class="mist mist1"></div>
+        <div class="mist mist2"></div>
+        <div class="mist mist3"></div>
+        <div class="mist mist4"></div>
+        <div class="mist mist5"></div>
+        <div class="mist mist6"></div>
+        <div class="mist mist7"></div>
+        
+        <!-- Éclats dorés (gardés pour la brillance) -->
+        <div class="splash-gold splash-gold1"></div>
+        <div class="splash-gold splash-gold2"></div>
+        <div class="splash-gold splash-gold3"></div>
+        <div class="splash-gold splash-gold4"></div>
+        <div class="splash-gold splash-gold5"></div>
+        <div class="splash-gold splash-gold6"></div>
+        <div class="splash-gold splash-gold7"></div>
     </div>
     
     <div class="main-content">
+        <!-- LOGO 3D : croissant doré -->
         <div class="logo-container">
             <model-viewer 
                 src="https://raw.githubusercontent.com/zznkch/delice/main/golden_crescent_with_ramadan_pattern.glb"
-                alt="Croissant de lune doré Ramadan Ftour Express"
+                alt="Croissant de lune doré - Ftour Express"
                 auto-rotate
                 auto-rotate-delay="0"
                 rotation-per-second="30deg"
@@ -594,11 +616,13 @@
             </model-viewer>
         </div>
         
+        <!-- TITRE BRILLANT DORÉ -->
         <div>
             <h1 class="title">Ftour Express</h1>
-            <div class="subtitle">Contact et Commandes</div>
+            <div class="subtitle">Contact & Commandes</div>
         </div>
         
+        <!-- BOUTONS -->
         <div class="buttons-grid">
             <a class="btn-contact" 
                target="_blank" 
@@ -647,7 +671,7 @@
     </div>
 
     <script>
-        // ===== EFFET D'ÉTOILES AU CLIC =====
+        // ===== EFFET D'ÉTOILES DORÉES AU CLIC =====
         const buttons = document.querySelectorAll('.btn-contact');
         
         buttons.forEach(btn => {
@@ -658,27 +682,28 @@
         });
         
         function createStars(x, y) {
-            const colors = ['#8FD6D2', '#FFFC00', '#E5533D', '#F2C36B', '#4CB7B1', '#F07B6A', '#6FCF97', '#27AE60', '#FFFFFF'];
-            const starCount = 10;
+            const colors = ['#DF9417', '#F5B041', '#FFD966', '#E5983A', '#D48C1C', '#F1C40F', '#FFB347', '#E6B800'];
+            const starCount = 14;
             
             for (let i = 0; i < starCount; i++) {
                 const star = document.createElement('div');
                 star.style.position = 'fixed';
                 star.style.left = `${x}px`;
                 star.style.top = `${y}px`;
-                star.style.width = '12px';
-                star.style.height = '12px';
+                star.style.width = `${6 + Math.random() * 10}px`;
+                star.style.height = star.style.width;
                 star.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
                 star.style.borderRadius = '50%';
                 star.style.zIndex = '1000';
                 star.style.pointerEvents = 'none';
-                star.style.boxShadow = '0 0 15px currentColor';
+                star.style.boxShadow = '0 0 20px currentColor';
+                star.style.opacity = '0.9';
                 
-                const angle = (i / starCount) * Math.PI * 2;
-                const distance = 60 + Math.random() * 60;
-                const duration = 700 + Math.random() * 400;
+                const angle = (i / starCount) * Math.PI * 2 + Math.random() * 0.5;
+                const distance = 70 + Math.random() * 90;
+                const duration = 800 + Math.random() * 600;
                 
-                star.style.transition = `all ${duration}ms cubic-bezier(0.1, 0.8, 0.3, 1)`;
+                star.style.transition = `all ${duration}ms cubic-bezier(0.1, 0.8, 0.2, 1)`;
                 document.body.appendChild(star);
                 
                 star.getBoundingClientRect();
@@ -691,30 +716,24 @@
             }
         }
         
-        // ===== CORRECTION POUR INSTAGRAM : OUVERTURE DIRECTE DU PROFIL DANS L'APP =====
+        // ===== CORRECTION INSTAGRAM : DEEP LINKING =====
         const instagramBtn = document.getElementById('instagram-btn');
         if (instagramBtn) {
-            // On remplace le comportement du clic
             instagramBtn.addEventListener('click', function(e) {
-                e.preventDefault();          // Bloque le lien classique
-                e.stopImmediatePropagation(); // Empêche l'autre écouteur d'étoiles (on le relance nous-mêmes)
+                e.preventDefault();
+                e.stopImmediatePropagation();
                 
-                // Génère les étoiles (comme avant)
                 createStars(e.clientX || e.touches?.[0]?.clientX || window.innerWidth / 2, 
                            e.clientY || e.touches?.[0]?.clientY || window.innerHeight / 2);
                 
                 const username = 'ftourexpress2k26';
-                // Schéma profond pour ouvrir l'application Instagram directement sur le profil
                 const appUrl = 'instagram://user?username=' + username;
-                // Lien web de secours
                 const webUrl = 'https://www.instagram.com/' + username + '/';
                 
-                // Timeout de secours : si l'app ne s'ouvre pas dans les 500ms, on va sur le web
                 const fallbackTimeout = setTimeout(function() {
                     window.location.href = webUrl;
                 }, 500);
                 
-                // Si l'application est lancée, la page passe en arrière-plan (document.hidden)
                 const handleVisibilityChange = function() {
                     if (document.hidden) {
                         clearTimeout(fallbackTimeout);
@@ -723,7 +742,6 @@
                 };
                 document.addEventListener('visibilitychange', handleVisibilityChange, { once: true });
                 
-                // Tentative d'ouverture de l'application
                 window.location.href = appUrl;
             });
         }
