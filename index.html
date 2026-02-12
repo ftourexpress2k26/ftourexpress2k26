@@ -6,7 +6,7 @@
     <title>Ftour Express</title>
     <meta name="description" content="Ftour Express - Contact et commandes pour le Ramadan. Snapchat, Instagram et email.">
     
-    <!-- Favicon 🌙 (croissant de lune) -->
+    <!-- Favicon 🌙 -->
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='85'%3E🌙%3C/text%3E%3C/svg%3E">
     <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🌙%3C/text%3E%3C/svg%3E">
     
@@ -18,7 +18,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
     
-    <!-- Model Viewer pour le 3D -->
+    <!-- Model Viewer 3D -->
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
     
     <style>
@@ -28,19 +28,16 @@
             inherits: true;
             initial-value: 0deg;
         }
-        
         @property --p {
             syntax: '<percentage>';
             inherits: true;
             initial-value: 0%;
         }
-        
         @property --c1 {
             syntax: '<color>';
             inherits: true;
             initial-value: #000;
         }
-        
         @property --c2 {
             syntax: '<color>';
             inherits: true;
@@ -49,50 +46,37 @@
         
         /* PALETTE DE COULEURS - VERSION CLAIRE */
         :root {
-            /* Turquoise/bleu vert */
             --turquoise-light: #8FD6D2;
             --turquoise-medium: #4CB7B1;
             --turquoise-dark: #2A8A85;
-            
-            /* Jaune Snapchat */
             --snap-yellow: #FFFC00;
-            
-            /* Rouge Instagram */
             --red-light: #F07B6A;
             --red-medium: #E5533D;
             --red-dark: #C73D2A;
-            
-            /* Vert email */
             --green-light: #6FCF97;
             --green-medium: #27AE60;
             --green-dark: #219653;
-            
-            /* Gris et blanc */
             --gray-light: #F5F5F5;
             --gray-medium: #E0E0E0;
             --gray-dark: #4A4A4A;
             --white: #FFFFFF;
             
-            /* Variables d'application - thème clair */
             --primary-color: var(--turquoise-medium);
             --secondary-color: var(--snap-yellow);
             --accent-color: var(--red-medium);
-            
             --background-dark: #F9F9F9;
             --background-medium: #FFFFFF;
             --background-light: #FFFFFF;
-            
-            --text-primary: #1A1A1A;        /* Texte foncé */
-            --text-secondary: #4A4A4A;       /* Gris foncé */
+            --text-primary: #1A1A1A;
+            --text-secondary: #4A4A4A;
             --text-accent: var(--turquoise-dark);
-            
             --shadow: 0 5px 15px rgba(143, 214, 210, 0.3);
             --shadow-strong: 0 10px 25px rgba(143, 214, 210, 0.5);
             --transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.1);
             --border-radius: 15px;
         }
         
-        /* Fond animé géométrique - COULEURS #8FD6D2 et #FFFFFF */
+        /* Fond animé géométrique */
         .animated-background {
             position: fixed;
             top: 0;
@@ -120,8 +104,8 @@
             0%, 20% {
                 --a: 135deg;
                 --p: 20%;
-                --c1: var(--turquoise-light);  /* #8FD6D2 */
-                --c2: var(--white);            /* #FFFFFF */
+                --c1: var(--turquoise-light);
+                --c2: var(--white);
                 background-position: 0 0, var(--s) var(--s);
             }
             40%, 50% {
@@ -134,7 +118,7 @@
             50.01%, 60% {
                 --a: 90deg;
                 --p: 25%;
-                --c1: var(--white);            /* Inversion */
+                --c1: var(--white);
                 --c2: var(--turquoise-light);
                 background-position: var(--s) 0, 0 var(--s);
             }
@@ -147,7 +131,6 @@
             }
         }
         
-        /* Overlay très léger pour adoucir et améliorer la lisibilité */
         .background-overlay {
             position: fixed;
             top: 0;
@@ -159,27 +142,22 @@
             z-index: -1;
         }
         
-        /* Barre de défilement personnalisée */
+        /* Barre de défilement */
         ::-webkit-scrollbar {
             width: clamp(8px, 1.5vw, 12px);
         }
-        
         ::-webkit-scrollbar-track {
             background: var(--turquoise-light);
             border-radius: 10px;
         }
-        
         ::-webkit-scrollbar-thumb {
             background: linear-gradient(135deg, var(--turquoise-medium), var(--turquoise-light), var(--turquoise-medium));
             border-radius: 10px;
             border: 2px solid var(--white);
         }
-        
         ::-webkit-scrollbar-thumb:hover {
             background: linear-gradient(135deg, var(--turquoise-light), var(--turquoise-medium), var(--turquoise-light));
         }
-        
-        /* Pour Firefox */
         * {
             scrollbar-width: thin;
             scrollbar-color: var(--turquoise-medium) var(--turquoise-light);
@@ -212,7 +190,6 @@
             -webkit-tap-highlight-color: transparent;
         }
         
-        /* Contenu principal */
         .main-content {
             display: flex;
             flex-direction: column;
@@ -224,7 +201,6 @@
             margin: clamp(30px, 5vw, 60px) 0;
         }
         
-        /* Conteneur du modèle 3D */
         .logo-container {
             width: clamp(140px, 25vw, 200px);
             height: clamp(140px, 25vw, 200px);
@@ -234,7 +210,6 @@
             margin-bottom: clamp(5px, 1vw, 10px);
         }
         
-        /* Modèle 3D */
         model-viewer {
             width: 100%;
             height: 100%;
@@ -251,7 +226,6 @@
             50% { transform: translateY(-15px) rotate(5deg); }
         }
         
-        /* Titre - adapté au thème clair */
         .title {
             font-family: 'Fredericka the Great', cursive;
             font-size: clamp(1.8rem, 5vw, 2.8rem);
@@ -289,7 +263,6 @@
             letter-spacing: 1px;
         }
         
-        /* Grille de boutons */
         .buttons-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
@@ -298,7 +271,7 @@
             max-width: min(800px, 95vw);
         }
         
-        /* Boutons - version verre clair */
+        /* BOUTONS - entièrement cliquables, effet visuel CSS */
         .btn-contact {
             position: relative;
             display: flex;
@@ -317,6 +290,7 @@
             -webkit-tap-highlight-color: rgba(143, 214, 210, 0.2);
             border: 1px solid rgba(143, 214, 210, 0.5);
             box-shadow: 0 4px 6px rgba(0,0,0,0.03);
+            cursor: pointer;
         }
         
         .btn-contact::before {
@@ -365,6 +339,12 @@
             left: 100%;
         }
         
+        /* Effet au clic/tap (CSS uniquement) */
+        .btn-contact:active {
+            transform: scale(0.98) translateY(-3px);
+            transition: transform 0.1s ease;
+        }
+        
         /* Icônes */
         .btn-icon-wrapper {
             position: relative;
@@ -407,7 +387,6 @@
             filter: drop-shadow(0 0 8px currentColor);
         }
         
-        /* Contenu des boutons */
         .btn-content {
             flex: 1;
             display: flex;
@@ -449,8 +428,6 @@
         /* ============ */
         /* COULEURS SPÉCIFIQUES PAR BOUTON */
         /* ============ */
-        
-        /* SNAPCHAT - JAUNE OFFICIEL #FFFC00 */
         .btn-contact:nth-child(1) .btn-icon {
             color: #FFFC00;
         }
@@ -463,14 +440,11 @@
             color: #FFFC00;
             filter: drop-shadow(0 0 12px rgba(255, 252, 0, 0.8));
         }
-        .btn-contact:nth-child(1):hover .icon-circle {
+        .btn-contact:nth-child(1):hover .icon-circle,
+        .btn-contact:nth-child(1):active .icon-circle {
             box-shadow: 0 0 20px rgba(255, 252, 0, 0.5);
         }
-        .btn-contact:nth-child(1) .btn-title {
-            color: #1A1A1A; /* Lisible sur fond clair */
-        }
         
-        /* INSTAGRAM - ROUGE */
         .btn-contact:nth-child(2) .btn-icon {
             color: var(--red-light);
         }
@@ -478,14 +452,11 @@
             border-color: var(--red-medium);
             background: rgba(229, 83, 61, 0.1);
         }
-        .btn-contact:nth-child(2):hover .btn-icon {
+        .btn-contact:nth-child(2):hover .btn-icon,
+        .btn-contact:nth-child(2):active .btn-icon {
             color: var(--red-light);
         }
-        .btn-contact:nth-child(2) .btn-title {
-            color: #1A1A1A;
-        }
         
-        /* EMAIL - VERT */
         .btn-contact:nth-child(3) .btn-icon {
             color: var(--green-light);
         }
@@ -493,14 +464,11 @@
             border-color: var(--green-medium);
             background: rgba(39, 174, 96, 0.1);
         }
-        .btn-contact:nth-child(3):hover .btn-icon {
+        .btn-contact:nth-child(3):hover .btn-icon,
+        .btn-contact:nth-child(3):active .btn-icon {
             color: var(--green-light);
         }
-        .btn-contact:nth-child(3) .btn-title {
-            color: #1A1A1A;
-        }
         
-        /* ANIMATIONS */
         @keyframes borderGlow {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
@@ -512,11 +480,8 @@
             body { padding: clamp(8px, 2.5vw, 15px); }
             .main-content { gap: clamp(20px, 3.5vw, 30px); margin: clamp(25px, 4vw, 40px) 0; }
             .logo-container { width: clamp(120px, 22vw, 160px); height: clamp(120px, 22vw, 160px); }
-            .buttons-grid { gap: clamp(12px, 1.8vw, 15px); }
             .animated-background { --s: min(60px, 15vw); animation: geometricAnimation 2.5s infinite alternate ease-in-out; }
-            model-viewer { animation: float3D 8s ease-in-out infinite; }
         }
-        
         @media (max-width: 480px) {
             body { padding: clamp(5px, 2vw, 10px); justify-content: flex-start; padding-top: clamp(20px, 5vw, 30px); }
             .main-content { margin: clamp(20px, 3vw, 30px) 0; gap: clamp(15px, 3vw, 25px); }
@@ -525,68 +490,36 @@
             .btn-title { font-size: clamp(0.9rem, 3vw, 1.2rem); }
             .btn-subtitle { font-size: clamp(0.7rem, 2.5vw, 0.9rem); }
             .animated-background { --s: min(40px, 20vw); animation: geometricAnimation 2s infinite alternate ease-in-out; }
-            model-viewer { animation: float3D 10s ease-in-out infinite; }
         }
-        
         @media (max-width: 360px) {
             .title { font-size: clamp(1.5rem, 4vw, 1.8rem); }
-            .subtitle { font-size: clamp(0.8rem, 2vw, 1rem); }
             .logo-container { width: 90px; height: 90px; }
-            .buttons-grid { gap: 10px; }
-            .btn-contact { min-height: 75px; padding: 12px 15px; }
-            .btn-icon-wrapper { width: 40px; height: 40px; }
-            .btn-icon { font-size: 1.2rem; }
-            .animated-background { --s: min(30px, 25vw); animation: geometricAnimation 1.8s infinite alternate ease-in-out; }
         }
-        
         @media (max-height: 600px) and (orientation: landscape) {
             body { padding: 10px; justify-content: flex-start; }
             .main-content { margin: 20px 0; gap: 20px; }
             .logo-container { width: 100px; height: 100px; }
-            .title { font-size: 1.6rem; margin-bottom: 5px; }
-            .subtitle { font-size: 0.9rem; margin-bottom: 20px; }
-            .btn-contact { min-height: 70px; padding: 15px; }
-            .animated-background { --s: 60px; animation: geometricAnimation 2s infinite alternate ease-in-out; }
-            model-viewer { animation: float3D 5s ease-in-out infinite; }
+            .title { font-size: 1.6rem; }
         }
-        
         @media (hover: none) and (pointer: coarse) {
             .btn-contact:hover { transform: none; }
-            .btn-contact:active { transform: translateY(-3px) scale(0.98); }
-            .btn-contact:hover .btn-icon { transform: none; }
-            .btn-contact:active .btn-icon { transform: scale(1.2) rotate(5deg); }
         }
-        
-        @media (max-height: 500px) {
-            .main-content { margin: 15px 0; gap: 15px; }
-            .logo-container { width: 80px; height: 80px; }
-            .title { font-size: 1.4rem; margin-bottom: 3px; }
-            .subtitle { font-size: 0.8rem; margin-bottom: 15px; }
-            .btn-contact { min-height: 65px; padding: 12px; }
-            .animated-background { --s: 50px; animation: geometricAnimation 1.5s infinite alternate ease-in-out; }
-        }
-        
         @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
+            *, *::before, *::after {
                 animation-duration: 0.01ms !important;
                 animation-iteration-count: 1 !important;
                 transition-duration: 0.01ms !important;
             }
             .animated-background { animation: none !important; }
             model-viewer { animation: none !important; }
-            .btn-contact:hover::before { animation: none; }
             .title { animation: none; }
         }
     </style>
 </head>
 <body>
-    <!-- Background animé géométrique #8FD6D2 et #FFFFFF -->
     <div class="animated-background"></div>
     <div class="background-overlay"></div>
     
-    <!-- Contenu principal -->
     <div class="main-content">
         <!-- Logo 3D -->
         <div class="logo-container">
@@ -607,47 +540,53 @@
             </model-viewer>
         </div>
         
-        <!-- Titre -->
         <div>
             <h1 class="title">Ftour Express</h1>
             <div class="subtitle">Contact et Commandes</div>
         </div>
         
-        <!-- Boutons de contact -->
+        <!-- BOUTONS DE CONTACT - FONCTIONNELS SUR MOBILE -->
         <div class="buttons-grid">
-            <!-- Snapchat - JAUNE OFFICIEL -->
-            <a class="btn-contact" target="_blank" href="https://www.snapchat.com/add/ftourexpress26" aria-label="Snapchat Ftour Express">
+            <!-- Snapchat -->
+            <a class="btn-contact" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               href="https://www.snapchat.com/add/ftourexpress26"
+               aria-label="Snapchat Ftour Express">
                 <div class="btn-icon-wrapper">
                     <div class="icon-circle"></div>
                     <div class="btn-icon"><i class="fab fa-snapchat-ghost"></i></div>
                 </div>
-                
                 <div class="btn-content">
                     <div class="btn-title">SNAPCHAT</div>
                     <div class="btn-subtitle">@ftourexpress26</div>
                 </div>
             </a>
             
-            <!-- Instagram - ROUGE -->
-            <a class="btn-contact" target="_blank" href="https://www.instagram.com/ftourexpress2k26" aria-label="Instagram Ftour Express">
+            <!-- Instagram -->
+            <a class="btn-contact" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               href="https://www.instagram.com/ftourexpress2k26"
+               aria-label="Instagram Ftour Express">
                 <div class="btn-icon-wrapper">
                     <div class="icon-circle"></div>
                     <div class="btn-icon"><i class="fab fa-instagram"></i></div>
                 </div>
-                
                 <div class="btn-content">
                     <div class="btn-title">INSTAGRAM</div>
                     <div class="btn-subtitle">@ftourexpress2k26</div>
                 </div>
             </a>
             
-            <!-- Email - VERT -->
-            <a class="btn-contact" href="mailto:ftourexpress2k26@gmail.com" aria-label="Email Ftour Express">
+            <!-- Email -->
+            <a class="btn-contact" 
+               href="mailto:ftourexpress2k26@gmail.com"
+               aria-label="Email Ftour Express">
                 <div class="btn-icon-wrapper">
                     <div class="icon-circle"></div>
                     <div class="btn-icon"><i class="fas fa-envelope"></i></div>
                 </div>
-                
                 <div class="btn-content">
                     <div class="btn-title">E-MAIL</div>
                     <div class="btn-subtitle">ftourexpress2k26@gmail.com</div>
@@ -657,52 +596,18 @@
     </div>
 
     <script>
-        // Effets sur les boutons
+        // Script minimal : uniquement animation d'étoiles au clic et ajustements responsive
         const buttons = document.querySelectorAll('.btn-contact');
         
         buttons.forEach(btn => {
-            btn.addEventListener('touchstart', function(e) {
-                e.preventDefault();
-                this.classList.add('touched');
-                this.style.transform = 'scale(0.98) translateY(-3px)';
-            }, { passive: false });
-            
-            btn.addEventListener('touchend', function() {
-                setTimeout(() => {
-                    this.classList.remove('touched');
-                    this.style.transform = 'translateY(-5px)';
-                }, 150);
-            });
-            
-            btn.addEventListener('mouseenter', function() {
-                if (!this.classList.contains('touched')) {
-                    this.style.transform = 'translateY(-5px)';
-                }
-            });
-            
-            btn.addEventListener('mouseleave', function() {
-                if (!this.classList.contains('touched')) {
-                    this.style.transform = 'translateY(0)';
-                }
-            });
-            
             btn.addEventListener('click', function(e) {
-                this.classList.add('clicked');
-                this.style.transform = 'scale(0.98) translateY(-5px)';
-                
+                // Créer des étoiles colorées (purement visuel, n'empêche pas le lien)
                 createStars(e.clientX || e.touches?.[0]?.clientX || window.innerWidth / 2, 
                            e.clientY || e.touches?.[0]?.clientY || window.innerHeight / 2);
-                
-                setTimeout(() => {
-                    this.style.transform = 'translateY(-5px)';
-                    setTimeout(() => {
-                        this.classList.remove('clicked');
-                    }, 100);
-                }, 150);
             });
         });
         
-        // Fonction pour créer des étoiles colorées au clic
+        // Fonction pour créer des étoiles
         function createStars(x, y) {
             const colors = ['#8FD6D2', '#FFFC00', '#E5533D', '#F2C36B', '#4CB7B1', '#F07B6A', '#6FCF97', '#27AE60'];
             const starCount = 8;
@@ -725,23 +630,19 @@
                 const duration = 600 + Math.random() * 300;
                 
                 star.style.transition = `all ${duration}ms cubic-bezier(0.1, 0.8, 0.3, 1)`;
-                
                 document.body.appendChild(star);
                 
                 star.getBoundingClientRect();
-                
                 star.style.transform = `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px) scale(0)`;
                 star.style.opacity = '0';
                 
                 setTimeout(() => {
-                    if (star.parentNode) {
-                        star.remove();
-                    }
+                    if (star.parentNode) star.remove();
                 }, duration);
             }
         }
         
-        // Initialisation
+        // Animation d'entrée des boutons
         function init() {
             setTimeout(() => {
                 buttons.forEach((btn, index) => {
@@ -758,17 +659,18 @@
                 });
             }, 300);
             
+            // Fix pour les hauteurs sur mobile
             const setVH = () => {
                 const vh = window.innerHeight * 0.01;
                 document.documentElement.style.setProperty('--vh', `${vh}px`);
             };
-            
             setVH();
             window.addEventListener('resize', setVH);
         }
         
         window.addEventListener('load', init);
         
+        // Rafraîchir l'animation du fond lors du redimensionnement
         let resizeTimeout;
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimeout);
