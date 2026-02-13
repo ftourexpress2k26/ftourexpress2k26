@@ -24,7 +24,7 @@
     <style>
         /* ============================================= */
         /*   THÈME : BLEU NUIT #172540 + DORÉ #DF9417   */
-        /*   FOND : IMAGE CANVA EXPRESS (RAW)           */
+        /*   FOND : IMAGE CANVA EXPRESS (VISIBLE, SANS FLOU) */
         /* ============================================= */
         
         :root {
@@ -62,7 +62,7 @@
             overflow-x: hidden;
         }
         
-        /* ---------- NOUVEAU FOND : image Canva + voile sombre ---------- */
+        /* ---------- FOND : image Canva EXPRESS, 100% visible, AUCUN voile sombre, AUCUN flou ---------- */
         body {
             position: relative;
             background-image: url('https://raw.githubusercontent.com/zznkch/delice/main/canvaexpress_page-0001.jpg');
@@ -85,21 +85,10 @@
             z-index: 0;
         }
 
-        /* Voile sombre pour garantir la lisibilité (bleu nuit semi-transparent) */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(23, 37, 64, 0.7);  /* #172540 à 70% */
-            backdrop-filter: blur(3px);          /* léger flou pour fondre l'image */
-            pointer-events: none;
-            z-index: 1;
-        }
+        /* 🔥 PLUS AUCUN VOILE SOMBRE – l’image est parfaitement visible 🔥 */
+        /* body::before a été supprimé – plus de flou, plus de calque bleu */
 
-        /* Tout le contenu passe au-dessus du voile */
+        /* Tout le contenu est directement sur l’image */
         .main-content {
             position: relative;
             z-index: 3;
@@ -147,7 +136,8 @@
             color: transparent;
             text-align: center;
             margin-bottom: clamp(5px, 1vw, 10px);
-            text-shadow: 0 0 15px rgba(223,148,23,0.7), 0 0 30px rgba(223,148,23,0.4);
+            /* Ombre noire pour lisibilité sur fond clair + lueur dorée */
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.6), 0 0 15px rgba(223,148,23,0.7), 0 0 30px rgba(223,148,23,0.4);
             line-height: 1.2;
             padding: 0 15px;
             word-wrap: break-word;
@@ -164,7 +154,7 @@
             line-height: 1.4;
             padding: 0 15px;
             letter-spacing: 2px;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+            text-shadow: 0 2px 8px rgba(0,0,0,0.7);
         }
         
         .buttons-grid {
@@ -182,6 +172,7 @@
             gap: clamp(15px, 2vw, 20px);
             padding: clamp(18px, 3vw, 25px);
             background: var(--glass-bg);
+            /* le flou sur les boutons reste (léger) – si vous voulez aussi le supprimer, retirez la ligne ci-dessous */
             backdrop-filter: blur(12px);
             border-radius: var(--border-radius);
             text-decoration: none;
@@ -409,7 +400,7 @@
 </head>
 <body>
 
-    <!-- LE FOND A ÉTÉ REMPLACÉ : l'image est dans body background, plus de div .gold-splash-bg -->
+    <!-- L'ARRIÈRE-PLAN EST MAINTENANT PARFAITEMENT VISIBLE ET NET -->
     
     <div class="main-content">
         <!-- LOGO 3D : croissant doré -->
@@ -431,7 +422,7 @@
             </model-viewer>
         </div>
         
-        <!-- TITRE BRILLANT DORÉ -->
+        <!-- TITRE AVEC DOUBLE OMBRE : LISIBLE SUR TOUS FONDS -->
         <div>
             <h1 class="title">Ftour Express</h1>
             <div class="subtitle">Contact & Commandes</div>
