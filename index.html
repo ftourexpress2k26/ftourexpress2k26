@@ -24,7 +24,7 @@
     <style>
         /* ============================================= */
         /*   THÈME : BLEU NUIT #172540 + DORÉ #DF9417   */
-        /*   avec NUAGES BRUMEUX BLANCS en fond         */
+        /*   FOND : IMAGE CANVA EXPRESS (RAW)           */
         /* ============================================= */
         
         :root {
@@ -62,8 +62,14 @@
             overflow-x: hidden;
         }
         
+        /* ---------- NOUVEAU FOND : image Canva + voile sombre ---------- */
         body {
-            background: var(--night-blue);
+            position: relative;
+            background-image: url('https://raw.githubusercontent.com/zznkch/delice/main/canvaexpress_page-0001.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
             color: var(--text-primary);
             font-family: 'Oswald', sans-serif;
             display: flex;
@@ -76,205 +82,33 @@
             position: relative;
             overflow-y: auto;
             -webkit-tap-highlight-color: transparent;
+            z-index: 0;
         }
 
-        /* ============================================= */
-        /*   FOND : NUAGES BRUMEUX + SPLASHES DORÉES   */
-        /* ============================================= */
-        .gold-splash-bg {
+        /* Voile sombre pour garantir la lisibilité (bleu nuit semi-transparent) */
+        body::before {
+            content: '';
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -2;
-            background: var(--night-blue);
-            overflow: hidden;
+            background: rgba(23, 37, 64, 0.7);  /* #172540 à 70% */
+            backdrop-filter: blur(3px);          /* léger flou pour fondre l'image */
+            pointer-events: none;
+            z-index: 1;
         }
 
-        /* ----- NUAGES BLANCS BRUMEUX (nouveaux) ----- */
-        .mist {
-            position: absolute;
-            background: radial-gradient(circle at 40% 50%, rgba(255, 245, 230, 0.2) 0%, rgba(255, 240, 220, 0.08) 60%, transparent 85%);
-            border-radius: 70% 30% 60% 40% / 50% 60% 40% 50%;
-            filter: blur(70px);
-            animation: floatMist 30s infinite alternate ease-in-out;
-            opacity: 0.5;
-            mix-blend-mode: screen;
-        }
-
-        .mist1 {
-            width: 80vmax;
-            height: 50vmax;
-            top: -5%;
-            left: -15%;
-            background: radial-gradient(circle, rgba(255, 249, 230, 0.18) 0%, transparent 80%);
-            animation-duration: 38s;
-            filter: blur(80px);
-        }
-        .mist2 {
-            width: 70vmin;
-            height: 70vmin;
-            bottom: 0;
-            right: 0;
-            background: radial-gradient(circle, rgba(255, 247, 225, 0.15) 0%, transparent 80%);
-            animation-duration: 32s;
-            animation-delay: -5s;
-            filter: blur(75px);
-        }
-        .mist3 {
-            width: 90vmin;
-            height: 60vmin;
-            top: 20%;
-            right: 5%;
-            background: radial-gradient(circle, rgba(255, 251, 240, 0.12) 0%, transparent 85%);
-            animation-duration: 45s;
-            animation-delay: -12s;
-            filter: blur(90px);
-        }
-        .mist4 {
-            width: 60vmax;
-            height: 60vmax;
-            bottom: 5%;
-            left: 0;
-            background: radial-gradient(circle, rgba(255, 250, 235, 0.1) 0%, transparent 80%);
-            animation-duration: 40s;
-            animation-delay: -3s;
-            filter: blur(85px);
-        }
-        .mist5 {
-            width: 50vmin;
-            height: 50vmin;
-            top: 60%;
-            left: 20%;
-            background: radial-gradient(circle, rgba(255, 248, 225, 0.2) 0%, transparent 80%);
-            animation-duration: 28s;
-            animation-delay: -8s;
-            filter: blur(70px);
-        }
-        .mist6 {
-            width: 40vmax;
-            height: 30vmax;
-            top: 10%;
-            left: 40%;
-            background: radial-gradient(circle, rgba(255, 252, 240, 0.1) 0%, transparent 80%);
-            animation-duration: 50s;
-            animation-delay: -18s;
-            filter: blur(95px);
-        }
-        .mist7 {
-            width: 100vmin;
-            height: 40vmin;
-            bottom: 15%;
-            right: 10%;
-            background: radial-gradient(circle, rgba(255, 245, 220, 0.1) 0%, transparent 85%);
-            animation-duration: 35s;
-            animation-delay: -1s;
-            filter: blur(80px);
-        }
-
-        /* ----- SPLASHES DORÉES (gardées, plus éclatantes) ----- */
-        .splash-gold {
-            position: absolute;
-            background: radial-gradient(circle at 30% 30%, rgba(223,148,23,0.25) 0%, rgba(223,148,23,0) 70%);
-            border-radius: 50%;
-            filter: blur(40px);
-            animation: floatGold 20s infinite alternate ease-in-out;
-        }
-
-        .splash-gold1 {
-            width: 55vmax;
-            height: 50vmax;
-            top: -10%;
-            left: -20%;
-            background: radial-gradient(circle, rgba(223,148,23,0.18) 0%, transparent 80%);
-            animation-duration: 24s;
-        }
-        .splash-gold2 {
-            width: 45vmin;
-            height: 45vmin;
-            bottom: 5%;
-            right: 0;
-            background: radial-gradient(circle, rgba(223,148,23,0.2) 0%, transparent 80%);
-            animation-duration: 19s;
-            animation-delay: -3s;
-            filter: blur(50px);
-        }
-        .splash-gold3 {
-            width: 60vmin;
-            height: 60vmin;
-            top: 40%;
-            right: 10%;
-            background: radial-gradient(circle, rgba(223,148,23,0.15) 0%, transparent 85%);
-            animation-duration: 27s;
-            animation-delay: -7s;
-            filter: blur(55px);
-        }
-        .splash-gold4 {
-            width: 35vmax;
-            height: 35vmax;
-            bottom: 20%;
-            left: -5%;
-            background: radial-gradient(circle, rgba(223,148,23,0.12) 0%, transparent 80%);
-            animation-duration: 22s;
-            animation-delay: -2s;
-            filter: blur(45px);
-        }
-        .splash-gold5 {
-            width: 25vmin;
-            height: 25vmin;
-            top: 15%;
-            left: 30%;
-            background: radial-gradient(circle, rgba(223,148,23,0.25) 0%, transparent 80%);
-            animation-duration: 18s;
-            animation-delay: -5s;
-            filter: blur(35px);
-        }
-        .splash-gold6 {
-            width: 40vmin;
-            height: 40vmin;
-            top: 70%;
-            left: 50%;
-            background: radial-gradient(circle, rgba(223,148,23,0.2) 0%, transparent 80%);
-            animation-duration: 21s;
-            animation-delay: -9s;
-            filter: blur(48px);
-        }
-        .splash-gold7 {
-            width: 30vmax;
-            height: 30vmax;
-            top: 5%;
-            right: 5%;
-            background: radial-gradient(circle, rgba(223,148,23,0.1) 0%, transparent 80%);
-            animation-duration: 26s;
-            animation-delay: -1s;
-            filter: blur(60px);
-        }
-
-        @keyframes floatMist {
-            0% { transform: translate(0, 0) scale(1); opacity: 0.3; }
-            50% { transform: translate(4%, -3%) scale(1.1); opacity: 0.5; }
-            100% { transform: translate(-3%, 2%) scale(0.95); opacity: 0.3; }
-        }
-
-        @keyframes floatGold {
-            0% { transform: translate(0, 0) scale(1); opacity: 0.5; }
-            50% { transform: translate(3%, -3%) scale(1.1); opacity: 0.8; }
-            100% { transform: translate(-2%, 2%) scale(0.95); opacity: 0.5; }
-        }
-
-        /* ============================================= */
-        /*   ÉLÉMENTS PRINCIPAUX (inchangés)            */
-        /* ============================================= */
-        
+        /* Tout le contenu passe au-dessus du voile */
         .main-content {
+            position: relative;
+            z-index: 3;
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: clamp(25px, 4vw, 40px);
             width: 100%;
             max-width: min(800px, 95vw);
-            z-index: 2;
             margin: clamp(30px, 5vw, 60px) 0;
         }
         
@@ -568,33 +402,14 @@
             .btn-contact:active { transform: scale(0.98); }
         }
         @media (prefers-reduced-motion: reduce) {
-            .mist, .splash-gold, model-viewer,
             .btn-contact::before, .btn-contact::after { animation: none !important; }
+            model-viewer { animation: none !important; }
         }
     </style>
 </head>
 <body>
 
-    <!-- FOND : NUAGES BRUMEUX + SPLASHES DORÉES -->
-    <div class="gold-splash-bg">
-        <!-- Nuages blancs / crème (brume) -->
-        <div class="mist mist1"></div>
-        <div class="mist mist2"></div>
-        <div class="mist mist3"></div>
-        <div class="mist mist4"></div>
-        <div class="mist mist5"></div>
-        <div class="mist mist6"></div>
-        <div class="mist mist7"></div>
-        
-        <!-- Éclats dorés (gardés pour la brillance) -->
-        <div class="splash-gold splash-gold1"></div>
-        <div class="splash-gold splash-gold2"></div>
-        <div class="splash-gold splash-gold3"></div>
-        <div class="splash-gold splash-gold4"></div>
-        <div class="splash-gold splash-gold5"></div>
-        <div class="splash-gold splash-gold6"></div>
-        <div class="splash-gold splash-gold7"></div>
-    </div>
+    <!-- LE FOND A ÉTÉ REMPLACÉ : l'image est dans body background, plus de div .gold-splash-bg -->
     
     <div class="main-content">
         <!-- LOGO 3D : croissant doré -->
